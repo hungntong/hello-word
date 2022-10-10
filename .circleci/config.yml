@@ -18,7 +18,6 @@ jobs:
           name: "Say hello"
           command: "echo Hello, World!"
 
-jobs:
   print_hello:
     docker:
       - image: circleci/node:13.8.0
@@ -28,7 +27,6 @@ jobs:
         name: "Print Hello"
         command: "echo Hello"
 
-jobs:
   print_world:
     docker:
       - image: circleci/node:13.8.0
