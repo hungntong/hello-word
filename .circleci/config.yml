@@ -29,4 +29,4 @@ workflows:
       - print_world:
           requires:
             - print_hello
-      -print_env
+      - print_env
