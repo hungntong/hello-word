@@ -12,7 +12,6 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - run: echo world
-
   print_env:
     docker:
       - image: circleci/node:13.8.0
