@@ -9,6 +9,7 @@ jobs:
       - run: echo ${Test}
       - run: return 1
       - run:
+        name: Upload Failed Tests
         command: echo "FAIL"
         when: on_fail
 
