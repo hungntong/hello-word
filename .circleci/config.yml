@@ -1,27 +1,21 @@
 # Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
-
-commands:
-  onfailcmd:
-    description: "Make to fail"
-    steps:
-      - run:
-          name: Testing Fail
-          shell: /bin/bash
-          environment:
-            Test: hello
-      - run: echo ${Test}
-      - run: return 1
-      - run:
-        command: echo "FAIL"
-        when: on_fail
-
       
 jobs:
   failonpurpose:
     docker:
       - image: circleci/node:13.8.0
     steps:
+      - run:
+        name: Testing Fail
+        shell: /bin/bash
+        environment:
+          Test: hello
+      - run: echo ${Test}
+      - run: return 1
+      - run:
+        command: echo "FAIL"
+        when: on_fail
       - onfailcmd
 
 workflows:
