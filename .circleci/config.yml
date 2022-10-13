@@ -2,19 +2,30 @@
 version: 2.1
 
 commands:
-  print_pipeline_id:
-    description: "Print workflow ID"
+  onfailcmd:
+    description: "Make to fail"
     steps:
-      - run: echo ${CIRCLE_WORKFLOW_ID}
+      - run:
+          name: Testing Fail
+          shell: /bin/bash
+          environment:
+            Test: hello
+      - run: echo ${Test}
+      - run: return 1
+      - run:
+        command: echo "FAIL"
+        when: on_fail
+
+      
 jobs:
-  get_workflow_id:
+  failonpurpose:
     docker:
-      - image: "circleci/node:9.6.1"
+      - image: circleci/node:13.8.0
     steps:
-      - print_pipeline_id
+      - onfailcmd
 
 workflows:
   # Name the workflow "welcome"
   test:
     jobs:
-      - get_workflow_id
+      - failonpurpose
