@@ -5,18 +5,18 @@ commands:
   print_pipeline_id:
     description: "Print workflow ID"
     parameters:
-      id:
+      to:
         type: string
         default: "Please"
     steps:
-      - run: echo << parameters.id >>
+      - run: echo << parameters.to >>
 jobs:
   get_workflow_id:
     docker:
       - image: "circleci/node:9.6.1"
     steps:
       - print_pipeline_id:
-        id: $CIRCLE_WORKFLOW_ID
+        to: $CIRCLE_WORKFLOW_ID
 
 workflows:
   # Name the workflow "welcome"
