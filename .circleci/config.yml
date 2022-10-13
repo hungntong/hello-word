@@ -6,17 +6,11 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run:
-        name: Testing Fail
-        shell: /bin/bash
-        environment:
-          Test: hello
       - run: echo ${Test}
       - run: return 1
       - run:
         command: echo "FAIL"
         when: on_fail
-      - onfailcmd
 
 workflows:
   # Name the workflow "welcome"
